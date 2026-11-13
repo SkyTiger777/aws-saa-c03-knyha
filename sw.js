@@ -1,4 +1,4 @@
-const CACHE='saa-5e932fe78d';
+const CACHE='saa-9e1e0b77ed';
 const CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png',
  'https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>Promise.all(CORE.map(u=>c.add(u).catch(()=>{})))));self.skipWaiting()});

@@ -12,7 +12,7 @@
 <meta name="description" content="Книга-курс українською для AWS Certified Solutions Architect – Associate (SAA-C03): теорія, нюанси з практичних тестів, мнемоніки, міні-тести.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Literata:wght@500;600;700&display=swap" rel="stylesheet">
-<script>try{const t=JSON.parse(localStorage.getItem('theme'));if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{const t=JSON.parse(localStorage.getItem('theme'));if(t)document.documentElement.dataset.theme=t;const z=JSON.parse(localStorage.getItem('fontScale'));if(z)document.documentElement.style.setProperty('--fz',z)}catch(e){}</script>
 <style>
 :root{--bg:#FBFBFA;--surface:#FFFFFF;--side:#F7F6F3;--text:#2F3437;--strong:#111111;--muted:#787774;
 --line:#EAEAEA;--code:#F1F0EC;--y-bg:#FBF3DB;--y:#956400;--r-bg:#FDEBEC;--r:#9F2F2D;--b-bg:#E1F3FE;--b:#1F6C9F;
@@ -39,6 +39,10 @@ padding:0 12px 0 34px;font:inherit;font-size:14px;outline:none}
 display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0 10px;font:inherit;font-size:14px}
 .btn:hover{background:var(--hover)}.btn:active{transform:scale(.98)}
 #menuBtn{display:none}
+main{zoom:var(--fz,1)}
+.fz{position:relative}#fzBtn{font-family:'Literata',Georgia,serif;font-weight:600;font-size:15px;letter-spacing:-.02em}
+#fzPop{position:absolute;right:0;top:44px;display:flex;align-items:center;gap:6px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:40}
+#fzPop .btn{width:40px;font-size:17px;font-weight:600}#fzVal{min-width:52px;text-align:center;font:500 13px 'JetBrains Mono',monospace;color:var(--muted);background:none;border:0;cursor:pointer;padding:0}
 .wrap{display:grid;grid-template-columns:300px minmax(0,1fr)}
 nav.side{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;background:var(--side);border-right:1px solid var(--line);padding:20px 14px 40px}
 .side h4{font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 8px 12px}
@@ -140,7 +144,7 @@ nav.side.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.25)}
 @media (max-width:560px){main{padding:0 16px 100px}.brand{font-size:15px}body{font-size:16px}.hero{padding-top:44px}
 .bento{grid-template-columns:1fr}.c2,.c3,.c6{grid-column:span 1}article h2{font-size:23px}#themeBtn span{display:none}
 .diagram{padding:12px}.diagram svg{max-width:none!important;width:720px!important;height:auto}}
-@media print{.top,nav.side,.chfoot,#results{display:none!important}.wrap{display:block}main{padding:0}
+@media print{main{zoom:1!important}.top,nav.side,.chfoot,#results{display:none!important}.wrap{display:block}main{padding:0}
 article.ch{break-before:page;border:0;padding-top:0}.reveal{opacity:1!important;transform:none!important}
 body{background:#fff;color:#111;font-size:11pt}.tw,.diagram{break-inside:avoid}details summary:after{content:""}.diagram:after{display:none}#lb{display:none!important}}
 </style></head>
@@ -148,7 +152,7 @@ body{background:#fff;color:#111;font-size:11pt}.tw,.diagram{break-inside:avoid}d
 <header class="top"><button class="btn" id="menuBtn" aria-label="Зміст"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M228 128a12 12 0 0 1-12 12H40a12 12 0 0 1 0-24h176a12 12 0 0 1 12 12ZM40 76h176a12 12 0 0 0 0-24H40a12 12 0 0 0 0 24Zm176 104H40a12 12 0 0 0 0 24h176a12 12 0 0 0 0-24Z"/></svg></button>
 <a class="brand" href="#top">AWS SAA-C03<small>книга-курс</small></a>
 <div class="search"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M232.5 215.5 185 168a92 92 0 1 0-17 17l47.5 47.5a12 12 0 0 0 17-17ZM44 112a68 68 0 1 1 68 68 68.1 68.1 0 0 1-68-68Z"/></svg><input id="q" type="search" placeholder="Пошук по книзі (наприклад: visibility timeout)" autocomplete="off" aria-label="Пошук"><div id="results"></div></div>
-<button class="btn" id="installBtn" hidden aria-label="Встановити застосунок">Встановити</button><button class="btn" id="themeBtn" aria-label="Тема"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M128 20a108 108 0 1 0 108 108A108.1 108.1 0 0 0 128 20Zm0 192V44a84 84 0 0 1 0 168Z"/></svg><span>&nbsp;Тема</span></button></header>
+<div class="fz"><button class="btn" id="fzBtn" aria-label="Розмір шрифту" aria-expanded="false" title="Розмір шрифту">Aa</button><div id="fzPop" hidden><button class="btn" id="fzMinus" aria-label="Зменшити шрифт">A−</button><button id="fzVal" title="Скинути">100%</button><button class="btn" id="fzPlus" aria-label="Збільшити шрифт">A+</button></div></div><button class="btn" id="installBtn" hidden aria-label="Встановити застосунок">Встановити</button><button class="btn" id="themeBtn" aria-label="Тема"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M128 20a108 108 0 1 0 108 108A108.1 108.1 0 0 0 128 20Zm0 192V44a84 84 0 0 1 0 168Z"/></svg><span>&nbsp;Тема</span></button></header>
 <div class="wrap">
 <nav class="side"><h4>Прогрес</h4><div class="prog"><div class="bar"><i></i></div><span></span></div><h4>Зміст</h4><ol><li><a href="#ch00" data-ch="ch00"><span class="n">00</span><span class="t">Як влаштований екзамен і як вчитися з цією книгою</span></a></li>
 <li><a href="#ch01" data-ch="ch01"><span class="n">01</span><span class="t">Глобальна інфраструктура, Shared Responsibility і Well-Architected</span></a></li>
@@ -22922,6 +22926,18 @@ const isPrint=location.search.includes('print=1');
 function applyTheme(t){if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;renderMermaid();}
 function curTheme(){const t=document.documentElement.dataset.theme;if(t)return t;return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
 $('#themeBtn').onclick=()=>{const n=curTheme()==='dark'?'light':'dark';LS.set('theme',n);applyTheme(n)};
+// розмір шрифту
+const FZ=[0.9,1,1.1,1.2,1.3,1.45,1.6];let fz=LS.get('fontScale',1);
+function setFz(v){const y=scrollY/Math.max(1,document.documentElement.scrollHeight);fz=Math.round(v*100)/100;
+ document.documentElement.style.setProperty('--fz',fz);LS.set('fontScale',fz);$('#fzVal').textContent=Math.round(fz*100)+'%';
+ $('#fzMinus').disabled=fz<=FZ[0];$('#fzPlus').disabled=fz>=FZ[FZ.length-1];scrollTo(0,y*document.documentElement.scrollHeight);}
+function stepFz(d){let i=FZ.findIndex(x=>x>=fz-0.001);if(i<0)i=FZ.length-1;if(FZ[i]>fz+0.001&&d<0)i++;setFz(FZ[Math.min(FZ.length-1,Math.max(0,i+d))]);}
+if(!isPrint)setFz(fz);else document.documentElement.style.setProperty('--fz',1);
+$('#fzBtn').onclick=e=>{e.stopPropagation();const p=$('#fzPop');p.hidden=!p.hidden;$('#fzBtn').setAttribute('aria-expanded',!p.hidden)};
+$('#fzPop').onclick=e=>e.stopPropagation();
+$('#fzMinus').onclick=()=>stepFz(-1);$('#fzPlus').onclick=()=>stepFz(1);$('#fzVal').onclick=()=>setFz(1);
+document.addEventListener('click',()=>{$('#fzPop').hidden=true;$('#fzBtn').setAttribute('aria-expanded','false')});
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='+'||e.key==='=')stepFz(1);else if(e.key==='-')stepFz(-1);});
 // mermaid
 let mermaidReady=false;
 function renderMermaid(){if(!window.mermaid)return;const dark=curTheme()==='dark'&&!isPrint;
